@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AdoCrudApp.Models.Employees>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <table class="table">
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Department</th>
+        </tr>
+        @foreach (var emp in Model)
+        {
+    <tr>
+        <td> @emp.Id</td>
+        <td> @emp.Name</td>
+        <td> @emp.Email</td>
+        <td> @emp.Mobile</td>
+        <td> @emp.Gender</td>
+        <td> @emp.DName</td>
+    </tr>
+        }
+    </table>
+</div>
