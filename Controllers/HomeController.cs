@@ -19,13 +19,40 @@ namespace AdoCrudApp.Controllers
             _logger = logger;
             dataAccess = new EmployeeDataAccess();
         }
-
+        public IActionResult Update(int id)
+        {
+            var data = dataAccess.GetEmployeeById(id);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult Update(Employees emp)
+        {
+            dataAccess.UpdateEmployee(emp);
+             return RedirectToAction("Index");
+            //return View();
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Employees emp)
+        {
+            dataAccess.CreateEmployee(emp);
+            return RedirectToAction("Index");
+            //return View();
+        }
+        public IActionResult Delete(int id)
+        {
+            dataAccess.DeleteEmployee(id);
+            return RedirectToAction("Index");
+            //return View();
+        }
         public IActionResult Index()
         {
             var emps = dataAccess.GetEmployees();
             return View(emps);
         }
-
         public IActionResult Privacy()
         {
             return View();
